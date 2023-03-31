@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+}
+
+.__react-custom-date-field__ input {
+    width: 92px;
+}
+
+.action-row .btn-action {
+    padding: 6px 15px;
+}
+
+.action-row .btn-action:not(:first-child) {
+    margin-left: 0.5em;
+}
+
+.action-row {
+    margin-top: 2.5em;
+}
+
+.field-row-period {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.field-row-period .__react-custom-date-field__ {
+    width: 250px;
+}
+
+.field-row-period .__react-custom-date-field__ input {
+    width: 112px;
+}
+
+.field-row-invalid-feedback .input-wrapper.invalid input {
+    color: red;
+}
+
+.field-date-custom.__react-custom-date-field__ input {
+    width: 152px;
+}
+
+.section-title {
+    display: block;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+}
+
+.empty-block {
+    height: 20em;
+}

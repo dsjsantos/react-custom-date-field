@@ -1,0 +1,170 @@
+/* --------------------------------
+**  module styles
+** --------------------------------
+**/
+.__react-custom-date-field__ {
+  position: relative;
+  font-size: inherit;
+  display: flex;
+  flex-wrap: wrap; }
+  .__react-custom-date-field__ .field-required-mark {
+    color: #ff2b2b;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: inherit; }
+  .__react-custom-date-field__ .field-label {
+    display: block;
+    margin-bottom: 0.25em;
+    margin-right: 0.3em;
+    flex-basis: 100%; }
+  .__react-custom-date-field__ .field-error {
+    margin-top: 0.2em;
+    text-align: left;
+    font-size: 0.9em;
+    color: #ff2b2b;
+    flex-basis: 100%; }
+  .__react-custom-date-field__ .input-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: auto; }
+  .__react-custom-date-field__.fph-floating {
+    margin-top: calc(1rem + 0.9em);
+    margin-bottom: 0.9em;
+    position: relative;
+    /* label como "placeholder" */
+    /* label suspenso */
+    /* validacao */
+    /* Autofill, selection and placeholder */ }
+    .__react-custom-date-field__.fph-floating input {
+      font-family: inherit;
+      color: inherit; }
+      .__react-custom-date-field__.fph-floating input, .__react-custom-date-field__.fph-floating input:focus, .__react-custom-date-field__.fph-floating input:not([type]):focus {
+        font-size: 1em;
+        height: 1.9rem;
+        padding-left: 3px;
+        margin-top: 2px;
+        border: none;
+        border-bottom: 2px solid black;
+        background-color: white !important;
+        border-radius: 0%; }
+      .__react-custom-date-field__.fph-floating input:active, .__react-custom-date-field__.fph-floating input:focus, .__react-custom-date-field__.fph-floating input:hover {
+        border-color: #1a1a1a !important;
+        outline: none; }
+    .__react-custom-date-field__.fph-floating .input-wrapper {
+      position: relative; }
+    .__react-custom-date-field__.fph-floating .ui.label.label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      pointer-events: none;
+      color: inherit;
+      font-size: inherit;
+      font-weight: 400;
+      overflow: hidden;
+      padding: 0 !important;
+      margin-left: 2px;
+      margin-top: 5px;
+      line-height: 1.3em;
+      background-color: white;
+      /* Necessario para tapar placeholders (datas) */ }
+    .__react-custom-date-field__.fph-floating:not(.non-floating-placeholder) .ui.label.label {
+      transition: 0.2s ease all; }
+    .__react-custom-date-field__.fph-floating .has-content .ui.label.label,
+    .__react-custom-date-field__.fph-floating .empty input:focus ~ .ui.label.label {
+      opacity: 1;
+      font-size: calc(max(calc(0.72 * 1em), 0.72rem)) !important;
+      top: -14px !important;
+      padding: 0 !important;
+      border-radius: 2px;
+      margin-top: 0px !important;
+      font-weight: 700; }
+    .__react-custom-date-field__.fph-floating.non-floating-placeholder .has-content .ui.label.label,
+    .__react-custom-date-field__.fph-floating.non-floating-placeholder .empty input:focus ~ .ui.label.label {
+      visibility: hidden; }
+    .__react-custom-date-field__.fph-floating:not(.no-border-feedback) .input-wrapper.invalid .ui.fluid.input {
+      border-bottom-color: #ff2b2b !important; }
+    .__react-custom-date-field__.fph-floating input:-webkit-autofill, .__react-custom-date-field__.fph-floating input:-webkit-autofill:active, .__react-custom-date-field__.fph-floating input:-webkit-autofill:hover, .__react-custom-date-field__.fph-floating input:-webkit-autofill:focus, .__react-custom-date-field__.fph-floating input:autofill, .__react-custom-date-field__.fph-floating input:autofill:active, .__react-custom-date-field__.fph-floating input:autofill:hover, .__react-custom-date-field__.fph-floating input:autofill:focus {
+      color: black;
+      caret-color: black;
+      border-color: black;
+      -webkit-text-fill-color: black;
+      box-shadow: 0 0 0px 30px white inset !important;
+      -webkit-box-shadow: 0 0 0px 30px white inset !important;
+      font-family: inherit;
+      font-size: 1em; }
+    .__react-custom-date-field__.fph-floating input:-webkit-autofill::first-line, .__react-custom-date-field__.fph-floating input:-webkit-autofill::first-line:active, .__react-custom-date-field__.fph-floating input:-webkit-autofill::first-line:hover, .__react-custom-date-field__.fph-floating input:-webkit-autofill::first-line:focus, .__react-custom-date-field__.fph-floating input:autofill::first-line, .__react-custom-date-field__.fph-floating input:autofill::first-line:active, .__react-custom-date-field__.fph-floating input:autofill::first-line:hover, .__react-custom-date-field__.fph-floating input:autofill::first-line:focus {
+      font-family: inherit;
+      font-size: inherit; }
+    .__react-custom-date-field__.fph-floating input::-webkit-input-placeholder, .__react-custom-date-field__.fph-floating input::-moz-placeholder, .__react-custom-date-field__.fph-floating input::-ms-placeholder {
+      color: tomato; }
+    .__react-custom-date-field__.fph-floating input::placeholder {
+      color: tomato;
+      opacity: 1;
+      /* Firefox */ }
+
+/* date picker specific styles */
+.__react-custom-date-field__ .input-wrapper .date-picker-wrapper {
+  z-index: 1;
+  position: absolute;
+  display: inline-block;
+  left: 0; }
+  .__react-custom-date-field__ .input-wrapper .date-picker-wrapper.not-visible {
+    display: none; }
+  .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-up, .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-down {
+    margin-left: 35px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-image: initial;
+    filter: drop-shadow(0 0 1px #555); }
+    .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-up.not-visible, .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-down.not-visible {
+      display: none; }
+  .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-up {
+    border-width: 0 10.5px 12px 10.5px;
+    border-color: transparent transparent #fff transparent; }
+  .__react-custom-date-field__ .input-wrapper .date-picker-wrapper > .triangle-down {
+    margin-top: -3px;
+    border-width: 12px 10.5px 0 10.5px;
+    border-color: #fff transparent transparent transparent; }
+.__react-custom-date-field__ .input-wrapper .date-picker-trigger {
+  position: relative;
+  width: calc(26px + 4px); }
+  .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      height: 26px;
+      width: 26px;
+      background-color: #fff;
+      border: 1px solid #aaa;
+      border-radius: 3px; }
+      .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper > button:hover {
+        background-color: #ddd; }
+      .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper > button:active, .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper > button:focus {
+        outline: none;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px rgba(0, 0, 0, 0.4) !important;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px rgba(0, 0, 0, 0.4) !important; }
+      .__react-custom-date-field__ .input-wrapper .date-picker-trigger > .button-wrapper > button .trigger-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+
+/*# sourceMappingURL=styles.css.map */

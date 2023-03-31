@@ -1,0 +1,265 @@
+/* --------------------------------
+**  module styles
+** --------------------------------
+**/
+
+$warning-color: #ff2b2b;
+.__react-custom-date-field__ {
+    position: relative;
+    font-size: inherit;
+    display: flex;
+    flex-wrap: wrap;
+
+    .field-required-mark {
+        color: $warning-color;
+        font-size: inherit;
+        font-weight: inherit;
+        text-decoration: inherit;
+    }
+
+    .field-label {
+        display: block;
+        margin-bottom: 0.25em;
+        margin-right: 0.3em;
+        flex-basis: 100%;
+    }
+
+    .field-error {
+        margin-top: 0.2em;
+        text-align: left;
+        font-size: 0.9em;
+        color: $warning-color;
+        flex-basis: 100%;
+    }
+
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    $font-size: 1em;
+    $text-color: black;
+    $bg-color: white;
+    $border-color: $text-color;
+    $placeholderColor: tomato;
+    $field-vertical-margin: 0.9em;
+    &.fph-floating {
+        margin-top: calc(1rem + #{$field-vertical-margin});
+        margin-bottom: $field-vertical-margin;
+        position: relative;
+        
+        input {
+            font-family: inherit;
+            color: inherit;
+    
+            &, &:focus, &:not([type]):focus {
+                font-size: $font-size;
+                height: 1.9rem;
+                padding-left: 3px;
+                margin-top: 2px;
+    
+                border: none;
+                border-bottom: 2px solid $border-color;
+                background-color: $bg-color !important;
+                border-radius: 0%;
+            }
+
+            &:active, &:focus, &:hover {
+                border-color: lighten($border-color, 10%) !important;
+                outline: none;
+            }
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+    
+        /* label como "placeholder" */
+        .ui.label.label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            pointer-events: none;    
+            color: inherit;
+            font-size: inherit;
+            font-weight: 400;
+            overflow: hidden;
+    
+            padding: 0 !important;
+            margin-left: 2px;
+            margin-top: 5px;
+            line-height: 1.3em;
+            background-color: $bg-color; /* Necessario para tapar placeholders (datas) */
+        }
+
+        &:not(.non-floating-placeholder) .ui.label.label {
+            transition: 0.2s ease all;
+        }
+
+        /* label suspenso */
+        .has-content .ui.label.label,
+        .empty input:focus ~ .ui.label.label {
+            opacity: 1;
+            font-size: calc(max(calc(0.72 * #{$font-size}), 0.72rem)) !important;
+            top: -14px !important;
+            padding: 0 !important;
+            border-radius: 2px;
+            margin-top: 0px !important;
+            font-weight: 700;
+        }
+
+        &.non-floating-placeholder {
+            .has-content .ui.label.label,
+            .empty input:focus ~ .ui.label.label {
+                visibility: hidden;
+            }
+        }
+
+        /* validacao */
+        &:not(.no-border-feedback) {
+            .input-wrapper.invalid {
+                .ui.fluid.input {
+                    border-bottom-color: $warning-color !important;
+                }
+
+            }
+        }
+
+        /* Autofill, selection and placeholder */
+        input {
+            &:-webkit-autofill, &:autofill {
+                &, &:active, &:hover, &:focus {
+                    color: $text-color;
+                    caret-color: $text-color;
+                    border-color: $text-color;
+                    -webkit-text-fill-color: $text-color;
+                    box-shadow: 0 0 0px 30px $bg-color inset !important;
+                    -webkit-box-shadow: 0 0 0px 30px $bg-color inset !important; 
+    
+                    font-family: inherit;
+                    font-size: $font-size;
+                }
+    
+                &::first-line {
+                    &, &:active, &:hover, &:focus {
+                        font-family: inherit;
+                        font-size: inherit;
+                    }
+                }
+            }
+
+            &::-webkit-input-placeholder, &::-moz-placeholder, &::-ms-placeholder { 
+                color: $placeholderColor;
+            }
+            &::placeholder {
+                color: $placeholderColor;
+                opacity: 1; /* Firefox */
+            }
+        }
+    }
+}
+
+/* date picker specific styles */
+$date-picker-triangle-color: #fff;
+$date-picker-triangle-border-color: #555;
+$date-picker-button-height: 26px;
+$date-picker-button-width: 26px;
+$date-picker-button-margin-left: 4px;
+$date-picker-trigger-button-bgColor: #fff;
+$date-picker-trigger-button-border-color: #aaa;
+$date-picker-trigger-button-hover-bgColor: #ddd;
+$date-picker-trigger-button-border-radius: 3px;
+.__react-custom-date-field__ {
+    .input-wrapper {
+        .date-picker-wrapper {
+            z-index: 1;
+            position: absolute;
+            display: inline-block;
+            left: 0;
+
+            &.not-visible {
+                display: none;
+            }
+
+            & > .triangle-up, & > .triangle-down {
+                margin-left: 35px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-image: initial;
+                filter: drop-shadow(0 0 1px $date-picker-triangle-border-color);
+
+                &.not-visible {
+                    display: none;
+                }
+            }
+
+            & > .triangle-up {
+                border-width: 0 10.5px 12px 10.5px;
+                border-color: transparent transparent $date-picker-triangle-color transparent;
+            }
+            
+            & > .triangle-down {
+                margin-top: -3px;
+                border-width: 12px 10.5px 0 10.5px;
+                border-color: $date-picker-triangle-color transparent transparent transparent;
+            }
+        }
+
+        $date-picker-wrapper-width: calc(#{$date-picker-button-width} + #{$date-picker-button-margin-left});
+        .date-picker-trigger {
+            position: relative;
+            width: $date-picker-wrapper-width;
+        
+            & > .button-wrapper {
+                position: absolute;
+                height: $date-picker-button-height;
+                width: $date-picker-button-width;
+                right: 0;
+
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+
+                & > button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;                    
+                    cursor: pointer;
+                    padding: 0;
+                    height: $date-picker-button-height;
+                    width: $date-picker-button-width;
+
+                    background-color: $date-picker-trigger-button-bgColor;
+                    border: 1px solid $date-picker-trigger-button-border-color;
+                    border-radius: $date-picker-trigger-button-border-radius;
+
+                    &:hover {
+                        background-color: $date-picker-trigger-button-hover-bgColor;
+                    }
+
+                    &:active, &:focus {
+                        outline: none;
+                        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px rgba(0, 0, 0, 0.4) !important;
+                        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px rgba(0, 0, 0, 0.4) !important;
+                    }
+
+                    .trigger-icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        -webkit-transform: translate(-50%, -50%);
+                        -ms-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+    }
+}
