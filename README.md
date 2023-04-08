@@ -114,13 +114,25 @@ Function to be called on component value changes. The parameters are the new val
 - *pickImageAlt*: (Optional) date picker trigger default image title 'alt'. It has no effect if 'customTriggerContent' were set.
 - *customTriggerContent*: (Optional) Custom content to date picker trigger 
 
-##### @customization=
-(Optional) It's a object that configure a optional internal date picker. If it were set will disable the internal date pick. There are two possibilities wich is customize/override only the validation or override ALL the four methods/properties as follows:
+##### @customization
+(Optional) It's a object that customizes the component masking behavior. If it were set will disable the internal date pick. There are two possibilities wich are customize/override only the validation or override the validation and mask methods/properties as follows:
 
-- *validate(value)*: Function the receives the current value and must return true | false indicating if the 
+- *validate(value)*: Function that receives the current value (masked) and must return (true | false) indicating if the value is valid or not.
 - *addMask(unmaskedValue, isErasing)*: Function to add a mask to an unmasked value. The property 'isErasing' indicates if the last editing action erased/removed part of previus value wich may be used to buid the mask correctly.
-- *removeMask(maskedValue)*: Function to remove mask from value.
-- *inputRegEx*: A string regular expression to validate the unmasked value during the value change. Be aware that it's not meant to valiate the complete date itself but and it mus accept combinations from empty to complete date. e.g., the internal regular expression is "^\d{0,8}$" so the unmasked value must contains only digits with length from 0 to 8.
+
+    > If present it is also required 'validate' and ('inputRegEx' or 'unmaskedMaxDigits').
+- *removeMask(maskedValue)*: Function to remove mask from value, probably you dont need any customization due that the internal 'removeMask' method already remove all non digit caractes as follows:
+
+    > If present it is also required 'validate', 'addMask' and ('inputRegEx' or 'unmaskedMaxDigits').
+
+```js
+const removeMask = maskedValue => maskedValue ? maskedValue.replace(/\D/g, "") : "";
+```
+
+- *inputRegEx*: A string regular expression to validate the unmasked value during the value change. Be aware that it's not meant to valiate the complete date itself but and it mus accept combinations from empty to complete date. e.g., the internal regular expression is "^\d{0,8}$" so the default unmasked value must contains only digits with length from 0 to 8.
+- *unmaskedMaxDigits*: This is used only if 'inputRegEx' isn't present. It´s a number that represents the maximum number of digits on unmasked value. e.g. if it is 12 this is the same as a inputRegEx = "^\d{0,12}$".
+
+    > If 'inputRegEx' or 'unmaskedMaxDigits' is present it is also required 'validate' and 'addMask'.
 
 
 ## Developing
@@ -134,7 +146,7 @@ npm run build
 
 ## Changelogs
 
-### v1.0.0 (March 31, 2023)
+### v1.0.0 (April 08, 2023)
 #### Added
 - First component release
 

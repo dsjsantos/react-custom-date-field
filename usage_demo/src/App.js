@@ -4,8 +4,6 @@ import pt_BR from "date-fns/locale/pt-BR";
 
 import './App.css';
 
-const customMaskRemove = maskedValue => maskedValue ? maskedValue.replace(/\D/g, "") : "";
-
 const customMaskAdd = (unmaskedValue, erasing) => {
     if(unmaskedValue) {
         if(erasing) { // add first '/' with 3 digits and '/' 5 dígitos
@@ -333,9 +331,8 @@ export default function App() {
                         onChange={setValueCustom}
                         customization={{ 
                             addMask: customMaskAdd,
-                            removeMask: customMaskRemove,
                             validate: customValidation,
-                            inputRegEx: "^[0-9]{0,12}$"
+                            unmaskedMaxDigits: 12
                         }}
                     />
                 </div>

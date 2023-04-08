@@ -38,24 +38,19 @@ const _dateMaskAdd = (unmaskedValue, isErasing) => {
     return "";
 }
 
-const _dateMaskRemove = (maskedValue) => {
-    if(maskedValue) {
-        return maskedValue.replace(/\//g, "");
-    }
-    return "";
-}
+const _dateMaskRemove = maskedValue => maskedValue ? maskedValue.replace(/\D/g, "") : "";
 
 const _isFunction = func => {
     return func && func.constructor && func.call && func.apply &&
         (typeof func === 'function') && ({}.toString.call(func) === "[object Function]");
 }
 
-const _isString = str => {
-    return typeof str === 'string' || str instanceof String;
-}
+const _isString = str => typeof str === 'string' || str instanceof String;
+
+const _isInteger = value => Number.isInteger ? Number.isInteger(value) : (typeof value==="number" && Math.floor(value)===value);
 
 const getFormatMethods = (customConfig, swapMonthAndDay) => {
-    if(!customConfig || (!customConfig.addMask && !customConfig.removeMask && !customConfig.inputRegEx)) {
+    if(!customConfig || (!customConfig.addMask && !customConfig.removeMask && !customConfig.inputRegEx && !customConfig.unmaskedMaxDigits)) {
         return { 
             addMask: _dateMaskAdd,
             removeMask: _dateMaskRemove,
@@ -65,10 +60,12 @@ const getFormatMethods = (customConfig, swapMonthAndDay) => {
             inputRegEx: "^[0-9]{0,8}$"
         };
     }
-    let { addMask, removeMask, inputRegEx, validate } = customConfig;
-    if(_isFunction(addMask) && _isFunction(removeMask) && _isString(inputRegEx) && _isFunction(validate)) {
+    let { addMask, removeMask, inputRegEx, unmaskedMaxDigits, validate } = customConfig;
+    if(_isFunction(addMask) && (_isString(inputRegEx) || _isInteger(unmaskedMaxDigits)) && _isFunction(validate)) {
         return { 
-            addMask, removeMask, inputRegEx,
+            addMask,
+            removeMask: _isFunction(removeMask) ? removeMask : _dateMaskRemove,
+            inputRegEx: _isString(inputRegEx) ? inputRegEx : `^[0-9]{0,${unmaskedMaxDigits}}$`,
             isValidValue: validate, 
             dateToString: () => {}, // No used with customization (no internal date picker)
             stringToDate: () => {}  // No used with customization (no internal date picker)
