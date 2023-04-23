@@ -164,7 +164,7 @@ export default function App() {
                         customization={null}
                     />
                     <DateWithDatePicker
-                        id="fldDate1_ID"
+                        id="fldDate2_ID"
                         name="fldDate2"
                         label={null}
                         className="field-two"
@@ -191,7 +191,7 @@ export default function App() {
                 </div>
                 <div className='field-row-common'>
                     <DateWithDatePicker
-                        id="fldDate1_ID"
+                        id="fldDate3_ID"
                         name="fldDate3"
                         label="Date field 3"
                         className="field-three"
@@ -206,7 +206,7 @@ export default function App() {
                     />
 
                     <DateWithDatePicker
-                        id="fldDate1_ID"
+                        id="fldDate4_ID"
                         name="fldDate4"
                         label={null}
                         className="field-four no-border-feedback"
@@ -316,7 +316,7 @@ export default function App() {
                 </div>
                 <div className='field-row-invalid-feedback'>
                     <DateWithDatePicker
-                        id="fldDateFrom_ID"
+                        id="fldDateCustom_ID"
                         name="fldDateCustom"
                         label="Custom"
                         className="field-date-custom"
