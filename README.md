@@ -6,6 +6,14 @@ React Custom Date component that renders a custom date input field with an optio
 
 npm install --save react-custom-date-field
 
+## Dependencies
+
+If you will user the built in date picker functionality you need to add jQuery and react-datepicker dependencies to your project as follows:
+
+```sh
+npm install jquery react-datepicker
+```
+
 ## Online Demo
 
 Coming soon.
